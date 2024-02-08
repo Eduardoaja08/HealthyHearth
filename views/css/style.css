@@ -293,14 +293,14 @@ a:focus {
     max-width: 1200px;
     height: calc(100vh - 35px);
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
     flex-direction: column;
     z-index: 2;
 }
 
 .carousel .carousel-text h1 {
-    /* text-align: center; */
+    text-align: center;
     color: #ffffff;
     font-size: 60px;
     font-weight: 700;
@@ -313,7 +313,7 @@ a:focus {
 
 .carousel .carousel-text p {
     color: #ffffff;
-    /* text-align: center; */
+    text-align: center;
     font-size: 20px;
     margin-bottom: 35px;
 }
