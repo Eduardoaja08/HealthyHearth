@@ -45,7 +45,7 @@
             </div>
             <div class="copyright">
                 <div class="container">
-                    <p>Copyright &copy;</p>
+                    <p>Todos los derechos reservados - New Tec</p>
                     <!-- <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p> -->
                 </div>
             </div>
