@@ -12,7 +12,7 @@ class ModeloProductos
         try {
             if ($item !== null) {
                 $stmt = Conexion::conectar()->prepare("SELECT P.*, C.* FROM $tabla P
-                                                        JOIN TB_CATEGORIAS C ON P.FK_CATEGORIA = C.ID_CATEGORIA WHERE $item = :valor");
+                                                        JOIN TB_CATEGORIA C ON P.FK_CATEGORIA = C.ID_CATEGORIA WHERE $item = :valor");
                 $stmt->bindParam(":valor", $valor, PDO::PARAM_STR);
             } else {
                 $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY ID_PRODUCTO DESC");
@@ -40,20 +40,6 @@ class ModeloProductos
             return [];
         }
     }
-
-
-    public static function mdlBuscarProducto($busqueda)
-    {
-        try {
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM tb_productos WHERE NOMBRE_PRODUCTO LIKE '%$busqueda%' OR DESCRIPCION LIKE '%$busqueda%'");
-            $stmt->execute();
-
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            return [];
-        }
-    }
-
 
     public static function mdlIngresarProducto($tabla, $nombre, $categoria, $descripcion, $tamano, $stock, $precio, $rutaAlmacenamiento)
     {

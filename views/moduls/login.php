@@ -17,13 +17,13 @@
     <div class="container-form sign-in">
         <div class="welcome-back">
             <div class="message">
-                <h2 style="color: white;">Bienvenido a HealthyHeart</h2>
+                <h2>Bienvenido a HealthyHeart</h2>
                 <p>Ingresa tu correo electrónico y contraseña para poder acceder</p>
                 <button class="sign-up-btn">Iniciar Sesion</button>
             </div>
         </div>
-        <form class="formulario" method="POST">
-            <!-- <h2 class="create-accoun" style="color: white;">Crear una cuenta</h2> -->
+        <form class="formulario" method="POST" action="?page=inicio_user">
+            <h2 class="create-account">Crear una cuenta</h2>
             <!-- <div class="iconos">
                 <div class="border-icon">
                     <i class='bx bxl-instagram'></i>
@@ -35,23 +35,17 @@
                     <i class='bx bxl-facebook-circle' ></i>
                 </div>
             </div> -->
-            <p class="cuenta-gratis" style="color: white;">Crear una cuenta gratis</p>
-            <?php
-                $login = new ControladorUsuario();
-                $login->ctrRegistrarUsuario();
-            ?>
-            <input type="text" name="name" placeholder="Nombre">
-            <input type="text" name="last_name" placeholder="Apellidos">
-            <input type="email" name="email" placeholder="Correo electrónico">
-            <input type="password" name="password" placeholder="Contraseña">
-            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Registrarse</button>
-            
+            <p class="cuenta-gratis">Crear una cuenta gratis</p>
+            <input type="text" placeholder="Nombre">
+            <input type="email" placeholder="Correo electrónico">
+            <input type="password" placeholder="Contraseña">
+            <input type="submit" value="Registrarse">
 
         </form>
     </div>
     <div class="container-form sign-up">
         <form class="formulario" method="POST">
-            <h2 class="create-account" style="color: white;">Iniciar Sesion</h2>
+            <h2 class="create-account">Iniciar Sesion</h2>
             <!-- <div class="iconos">
                 <div class="border-icon">
                     <i class='bx bxl-instagram'></i>
@@ -65,6 +59,7 @@
             </div> -->
             <p class="cuenta-gratis">¿Aun no tienes una cuenta?</p>
             <?php
+                $login = new ControladorUsuario();
                 $login->ctrIngresoUsuario();
             ?>
             <input type="email"id="ingemail" name="ingemail" placeholder="Correo electrónico">
@@ -75,9 +70,9 @@
         </form>
         <div class="welcome-back">
             <div class="message">
-                <h2 style="color: white;">Bienvenido de nuevo</h2>
+                <h2>Bienvenido de nuevo</h2>
                 <p>Si aun no tienes una cuenta por favor registrese aqui</p>
-                <button class="sign-in-btn" style="color: white;">Registrarse</button>
+                <button class="sign-in-btn">Registrarse</button>
             </div>
         </div>
     </div>

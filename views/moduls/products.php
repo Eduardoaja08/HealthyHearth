@@ -16,17 +16,16 @@
               <label for="search-field" class="sr-only">Buscar</label>
               <div class="relative w-full text-gray-400 focus-within:text-gray-600">
                 <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
-                  <i class="fas fa-search mr-2" style="margin-left: 10px"></i>
+                <i class="fas fa-search mr-2"></i>
                 </div>
                 <input
                   id="search-field"
-                  class="block w-full h-full pl-8 pr-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
+                  class="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
                   placeholder="Buscar"
                   type="search"
                   name="search"
                 />
               </div>
-              <!-- <input type="submit" name="btn-search"> -->
             </form>
           </div>
     <section aria-labelledby="products-heading" class="pt-6 pb-24">
@@ -35,18 +34,18 @@
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10 mt-6 lg:mt-10">
         <!-- Filtrado (izquierda) -->
         <!-- Filtrado (izquierda) -->
-<!-- <form class="hidden lg:block">
+<form class="hidden lg:block">
   <h3 class="text-lg font-medium text-gray-900 mb-2">Categories</h3>
 
-  
+  <!-- Enlaces de subcategorías -->
   <ul role="list" class="text-sm font-medium text-gray-900 space-y-2">
     <li><a href="#" class="hover:text-green-600" style="color: black;">Suplementos</a></li>
     <li><a href="#" class="hover:text-green-600" style="color: black;">Proteinas</a></li>
     <li><a href="#" class="hover:text-green-600" style="color: black;">Recetas saludables</a></li>
-   
+    <!-- Agrega más enlaces según sea necesario -->
   </ul>
 
- 
+  <!-- Filtros (color, categoría, tamaño) -->
   <div class="mt-6 border-t border-gray-200 pt-6">
     <h3 class="text-lg font-medium text-gray-900 mb-2">Precio</h3>
     <div class="space-y-2">
@@ -58,7 +57,7 @@
         <input id="color-beige" type="checkbox" class="h-4 w-4 text-green-600 focus:ring-green-500">
         <label for="color-beige" class="ml-2 text-sm text-gray-600"> mayor de $ 100</label>
       </div>
-     
+      <!-- Agrega más checkboxes según sea necesario -->
     </div>
   </div>
 
@@ -79,7 +78,7 @@
       </div>
     </div>
   </div>
-</form> -->
+</form>
 
 
         <!-- Contenido del producto (derecha) -->
@@ -88,37 +87,6 @@
            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
  
            <?php
-
-          if(isset($_GET['search'])) { 
-
-          $listarProductos = new ControladorProductos();
-          $lista = $listarProductos->ctrBuscarProducto($_GET['search']);
-
-          if (empty($lista)) {
-            echo "<p>No hay resultados.</p>";
-          } else {
-          foreach ($lista as $producto) {
-
-          ?>
-  
-
-              <div class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-              <img class="w-full h-32 object-cover mb-4 rounded-md" src="<?php echo $producto['FOTO']; ?>" alt="Imagen del producto">
-              <h3 class="text-lg font-semibold text-gray-900 mb-2"><?php echo $producto['NOMBRE_PRODUCTO']; ?></h3>
-              <p class="text-gray-500 mb-4" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 160px;"><?php echo $producto['DESCRIPCION']; ?></p>
-              <p class="text-green-600 font-bold">$<?php echo $producto['PRECIO']; ?></p>
-              <form method="post">
-                <input type="hidden" name="producto_id" value="<?php echo $producto['ID_PRODUCTO']; ?>">
-                <input type="submit" class="mt-4 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700" name="agregar" value="Agregar al carrito">
-              </form>
-              </div>
-          <?php
-            }
-          }
-          } else {
-
-          
-
 
           $listarProductos = new ControladorProductos();
           $lista = $listarProductos->ctrMostrarTotalProductos();
@@ -130,19 +98,18 @@
 
 
               <div class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-              <img class="w-full h-32 object-cover mb-4 rounded-md" src="<?php echo $producto['FOTO']; ?>" alt="Imagen del producto">
+              <img class="w-auto h-32 object-cover mb-4 rounded-md" src="<?php echo $producto['FOTO']; ?>" alt="Imagen del producto">
               <h3 class="text-lg font-semibold text-gray-900 mb-2"><?php echo $producto['NOMBRE_PRODUCTO']; ?></h3>
               <p class="text-gray-500 mb-4" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 160px;"><?php echo $producto['DESCRIPCION']; ?></p>
               <p class="text-green-600 font-bold">$<?php echo $producto['PRECIO']; ?></p>
               <form method="post">
                 <input type="hidden" name="producto_id" value="<?php echo $producto['ID_PRODUCTO']; ?>">
                 <input type="submit" class="mt-4 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700" name="agregar" value="Agregar al carrito">
-              </form>
-              </div>
-          <?php
-            }
-          }
-          ?>
+            </form>
+  </div>
+    <?php
+  }
+  ?>
 </div>
             <?php
 

@@ -21,60 +21,6 @@ class ControladorUsuario
                 if ($respuesta["CORREO"] == $_POST["ingemail"] && $respuesta["CONTRASENA"] == $encriptar) {
                     if ($respuesta["FK_ESTATUS"] == 1) {
 
-                        $_SESSION["validarSesionBackendUsuario"] = "ok";
-                        $_SESSION["id"]                   = $respuesta["ID_USUARIO"];
-                        $_SESSION["nombre"]               = $respuesta["NOMBRE_USUARIO"] . " " . $respuesta["APELLIDOS_USUARIO"];
-                        $_SESSION["foto"]                 = $respuesta["FOTO_PERFIL"];
-                        $_SESSION["email"]                = $respuesta["CORREO"];
-                        $_SESSION["password"]             = $respuesta["CONTRASENA"];
-                        $_SESSION["perfil"]               = $respuesta["FK_ROL"];
-
-
-                        echo '<script>
-
-                            window.location = "inicio";
-
-                        </script>';
-
-                    } else {
-
-                        echo '<br>
-                        <div class="alert alert-warning">Este usuario aún no está activado</div>';
-
-                    }
-
-                } else {
-
-                    echo '<br>
-                    <div class="alert alert-danger">Error al ingresar vuelva a intentarlo</div>';
-
-                }
-
-            }
-        }
-    }
-
-
-
-    public function ctrRegistrarUsuario()
-    {
-        if (isset($_POST["email"])) {
-
-            if (preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["email"]) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])) {
-
-                // $encriptar = crypt($_POST["ingpassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-                $encriptar = $_POST["password"];
-                $valor = $_POST["email"];
-                $nombre = $_POST["name"];
-                $apellidos = $_POST["last_name"];
-                $tabla = "tb_usuarios";
-
-                $respuesta = ModeloUsuario::mdlRegistrarUsuario($tabla, $valor, $encriptar, $nombre, $apellidos);
-                
-                if ($respuesta["CORREO"] == $_POST["email"] && $respuesta["CONTRASENA"] == $encriptar) {
-                    if ($respuesta["FK_ESTATUS"] == 1) {
-
                         $_SESSION["validarSesionBackend"] = "ok";
                         $_SESSION["id"]                   = $respuesta["ID_USUARIO"];
                         $_SESSION["nombre"]               = $respuesta["NOMBRE_USUARIO"] . " " . $respuesta["APELLIDOS_USUARIO"];

@@ -163,13 +163,6 @@ public static function ctrEditarProducto($id_producto, $nombre, $categoria, $des
                 </script>';
         }
     }
-
-
-    public static function ctrBuscarProducto($busqueda)
-    {
-        $respuesta = ModeloProductos::mdlBuscarProducto($busqueda);
-        return $respuesta;
-    }
 }
 
 

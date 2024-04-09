@@ -29,35 +29,6 @@ class ModeloUsuario
 
     }
 
-
-    public static function mdlRegistrarUsuario($tabla, $valor, $encriptar, $nombre, $apellidos)
-    {
-
-        try {
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(NOMBRE_USUARIO, APELLIDOS_USUARIO, CORREO, CONTRASENA, FK_ROL, FK_ESTATUS) 
-            VALUES (:nombre, :apellidos, :correo, :contrasena, 1, 1)");
-
-            $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-            $stmt->bindParam(":correo", $valor, PDO::PARAM_STR);
-            $stmt->bindParam(":contrasena", $encriptar, PDO::PARAM_STR);
-            $stmt->bindParam(":apellidos", $apellidos, PDO::PARAM_STR);
-
-            if ($stmt->execute()) {
-                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE CORREO = :correo ORDER BY ID_USUARIO DESC");
-
-                $stmt->bindParam(":correo", $valor, PDO::PARAM_STR);
-                $stmt->execute();
-                return $stmt->fetch();
-            } else {
-                return "error";
-            }
-        } catch (PDOException $e) {
-            return $e;
-        }
-    }
-
-    
-
     /*=============================================
     ACTUALIZAR PERFIL
     =============================================*/
